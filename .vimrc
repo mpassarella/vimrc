@@ -1,4 +1,6 @@
 execute pathogen#infect()
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
 syntax on
 
 " Color scheme
@@ -68,8 +70,11 @@ let netrw_banner = 0
 " Lightline
 let g:lightline = {
 \     'active': {
-\         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+\         'left': [['mode', 'paste' ], ['gitbranch', 'readonly', 'filename', 'modified']],
 \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+\     },
+\     'component_function': { 
+\         'gitbranch' : 'fugitive#head' 
 \     }
 \ }
 
@@ -78,3 +83,7 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit -m ""
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gd :Gdiff<CR>
+
+" Convert markdown to PDF
+nnoremap <leader>cp :!pandoc -f markdown -t latex -o %.pdf %<CR>
+nnoremap <leader>cd :!pandoc -f markdown -t docx -o %.docx %<CR>
