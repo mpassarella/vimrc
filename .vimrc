@@ -89,5 +89,6 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>cp :!pandoc -f markdown -t latex -o %.pdf %<CR>
 nnoremap <leader>cd :!pandoc -f markdown -t docx -o %.docx %<CR>
 
-" Mapping Omnicompletion
+" Mapping Omnicompletion and javacomplete2
 inoremap <C-@> <C-x><C-o>
+set completeopt=noinsert
