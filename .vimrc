@@ -4,7 +4,9 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 syntax on
 
 " Color scheme
-colorscheme monokai
+set t_Co=256   
+set background=dark
+colorscheme PaperColor
 
 " General settings
 set hlsearch
@@ -91,4 +93,3 @@ nnoremap <leader>cd :!pandoc -f markdown -t docx -o %.docx %<CR>
 
 " Mapping Omnicompletion and javacomplete2
 inoremap <C-@> <C-x><C-o>
-set completeopt=noinsert
