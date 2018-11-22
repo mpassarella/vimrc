@@ -93,3 +93,10 @@ nnoremap <leader>cd :!pandoc -f markdown -t docx -o %.docx %<CR>
 
 " Mapping Omnicompletion and javacomplete2
 inoremap <C-@> <C-x><C-o>
+:set completeopt+=noinsert
+
+" Quick functions
+
+"Delete empty lines
+nmap <F3> :g/^$/d<CR>
+imap <F3> :g/^$/d<CR>
