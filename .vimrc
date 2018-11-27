@@ -108,11 +108,11 @@ imap <F2> <ESC>:!mvn clean install<CR>
 vmap <F2> <ESC>:!mvn clean install<CR>
 
 " Snippets
-imap syso<TAB> System.out.println(
-imap sysr<TAB> System.err.println(
-imap for<TAB> for(int i=0; i<max; i++) {<CR><CR>}
-imap fore<TAB> for(Object obj : array) {<CR><CR>}
-imap while<TAB> while(true) {<CR><CR>}
-imap switch<TAB> switch(variable) {<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-imap try<TAB> try {<CR><CR>} catch (Exception ex) {<CR><CR>} finally {<CR><CR>}
-imap if<TAB> if {<CR><CR>} else {<CR><CR>}
+autocmd FileType java imap syso<TAB> System.out.println(
+autocmd FileType java imap sysr<TAB> System.err.println(
+autocmd FileType java imap for<TAB> for(int i=0; i<max; i++) {<CR><CR>}
+autocmd FileType java imap fore<TAB> for(Object obj : array) {<CR><CR>}
+autocmd FileType java imap while<TAB> while(true) {<CR><CR>}
+autocmd FileType java imap switch<TAB> switch(variable) {<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+autocmd FileType java imap try<TAB> try {<CR><CR>} catch (Exception ex) {<CR><CR>} finally {<CR><CR>}
+autocmd FileType java imap if<TAB> if {<CR><CR>} else {<CR><CR>}
