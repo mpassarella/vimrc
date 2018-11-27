@@ -6,13 +6,14 @@ syntax on
 " Color scheme
 set t_Co=256   
 set background=dark
-colorscheme PaperColor
+colorscheme gummybears
 
 " General settings
 set hlsearch
 set relativenumber
 set ruler
 set ignorecase
+set autoindent
 
 " Disable arrow keys 
 noremap <Up> <NOP>
@@ -47,14 +48,13 @@ nnoremap <leader>t :shell<CR>
 
 " XML formatting
 nnoremap <leader>x :%!xmllint --format -<CR>
+vnoremap <leader>x :'<,'>!xmllint --format -<CR>
 
 " Hex mode
 nnoremap <leader>h :%!xxd<CR>
 nnoremap <leader>H :%!xxd -r<CR>
-
-" IDE Commands 
-nmap <F2> :!mvn clean install<CR>
-imap <F2> <ESC>:!mvn clean install<CR>
+vnoremap <leader>h :'<,'>!xxd<CR>
+vnoremap <leader>H :'<,'>!xxd -r<CR>
 
 " File Explorer
 nnoremap <leader>o :Vexplore<CR>
@@ -97,6 +97,22 @@ inoremap <C-@> <C-x><C-o>
 
 " Quick functions
 
-"Delete empty lines
+" Delete empty lines
 nmap <F3> :g/^$/d<CR>
 imap <F3> :g/^$/d<CR>
+vmap <F3> :g/^$/d<CR>
+
+" Compile with maven 
+nmap <F2> :!mvn clean install<CR>
+imap <F2> <ESC>:!mvn clean install<CR>
+vmap <F2> <ESC>:!mvn clean install<CR>
+
+" Snippets
+imap syso<TAB> System.out.println(
+imap sysr<TAB> System.err.println(
+imap for<TAB> for(int i=0; i<max; i++) {<CR><CR>}
+imap fore<TAB> for(Object obj : array) {<CR><CR>}
+imap while<TAB> while(true) {<CR><CR>}
+imap switch<TAB> switch(variable) {<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+imap try<TAB> try {<CR><CR>} catch (Exception ex) {<CR><CR>} finally {<CR><CR>}
+imap if<TAB> if {<CR><CR>} else {<CR><CR>}
