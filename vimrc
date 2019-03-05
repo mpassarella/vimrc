@@ -10,10 +10,16 @@ colorscheme gummybears
 
 " General settings
 set hlsearch
+set incsearch
 set relativenumber
 set ruler
 set ignorecase
 set autoindent
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 
 " Disable arrow keys 
 noremap <Up> <NOP>
@@ -94,7 +100,7 @@ nnoremap <leader>ck :!pandoc -f gfm -t pptx -o %.pptx %<CR>
 nnoremap <leader>ch :!pandoc -f gfm -t html -o %.html %<CR>
 
 " Markdown preview in Google Chrome
-nnoremap <leader>p :!google-chrome %<CR>
+nnoremap <leader>p :!google-chrome "%"<CR>
 
 " Mapping Omnicompletion and javacomplete2
 inoremap <C-@> <C-x><C-o>
