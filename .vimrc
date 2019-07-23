@@ -99,6 +99,13 @@ nnoremap <leader>cd :!pandoc -f gfm -t docx -o %.docx %<CR>
 nnoremap <leader>ck :!pandoc -f gfm -t pptx -o %.pptx %<CR>
 nnoremap <leader>ch :!pandoc -f gfm -t html -o %.html %<CR>
 
+" Minimap keybindings
+let g:minimap_show='<leader>ms'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>mc'
+let g:minimap_toggle='<leader>mt'
+let g:minimap_highlight='Visual'
+
 " Markdown preview in Google Chrome
 nnoremap <leader>p :!google-chrome "%"<CR>
 
