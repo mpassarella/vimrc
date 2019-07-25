@@ -4,9 +4,9 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 syntax on
 
 " Color scheme
-" set t_Co=256   
-" set background=dark
-" colorscheme gummybears
+set t_Co=256   
+set background=dark
+colorscheme plastic
 
 " General settings
 set hlsearch
@@ -15,6 +15,7 @@ set relativenumber
 set ruler
 set ignorecase
 set autoindent
+set colorcolumn=80
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -34,9 +35,9 @@ set smarttab
 set expandtab
 
 " Managing tabs
-nnoremap tn :tabnew<CR>
+nnoremap tt :tabnew<CR>
 nnoremap tp :tabprev<CR>
-nnoremap tt :tabnext<CR>
+nnoremap tn :tabnext<CR>
 nnoremap tf :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
@@ -50,7 +51,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 
 " Shell mode
-nnoremap <leader>t :shell<CR>
+nnoremap <leader>t :terminal<CR>
+nnoremap <leader>ts :shell<CR>
 
 " XML formatting
 nnoremap <leader>x :%!xmllint --format -<CR>
@@ -83,7 +85,8 @@ let g:lightline = {
 \     },
 \     'component_function': { 
 \         'gitbranch' : 'fugitive#head' 
-\     }
+\     },
+\     'coloscheme': 'plastic'
 \ }
 
 " Remapping Git fugitive plugin keys
@@ -105,6 +108,10 @@ let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mt'
 let g:minimap_highlight='Visual'
+
+" Spellchecking 
+nnoremap <leader>sc :set spell spelllang=en_uk<CR>
+nnoremap <leader>so :set nospell<CR>
 
 " Markdown preview in Google Chrome
 nnoremap <leader>p :!google-chrome "%"<CR>
