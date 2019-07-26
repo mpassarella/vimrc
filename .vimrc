@@ -50,6 +50,7 @@ nnoremap <leader>co :set colorcolumn=0<CR>
 
 " Find files
 nnoremap <leader>f :e **/*
+nnoremap <leader>F :tabe **/*
 
 " Quick saves
 nnoremap <leader>s :w<CR>
@@ -97,12 +98,16 @@ let g:lightline = {
 \     'colorscheme': 'plastic'
 \ }
 
-" Remapping Git fugitive plugin keys
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -m ""
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gu :Gpull<CR>
-nnoremap <leader>gd :Gdiff<CR>
+" Remapping VC commands for source code versioning systems
+nnoremap <leader>vs :VCStatus<CR>
+nnoremap <leader>vc :VCCommit -m ""
+nnoremap <leader>vp :VCPush<CR>
+nnoremap <leader>vu :VCPull<CR>
+nnoremap <leader>vd :VCDiff<CR>
+nnoremap <leader>vi :VCIncoming<CR>
+nnoremap <leader>vo :VCOutgoing<CR>
+nnoremap <leader>vl :VCLog<CR>
+nnoremap <leader>vb :VCBrowse<CR>
 
 " Convert markdown to PDF, PPTX and DOCX
 nnoremap <leader>cp :!pandoc -f gfm -t latex -o %.pdf %<CR>
