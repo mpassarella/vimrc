@@ -131,7 +131,7 @@ nnoremap <leader>p :!google-chrome "%"<CR>
 
 " Mapping Omnicompletion and javacomplete2
 inoremap <C-@> <C-x><C-o>
-:set completeopt+=noinsert
+set completeopt+=noinsert
 
 " Quick functions
 
@@ -148,8 +148,8 @@ vmap <F2> <ESC>:!mvn clean install<CR>
 " Snippets
 autocmd FileType java imap syso<TAB> System.out.println(
 autocmd FileType java imap sysr<TAB> System.err.println(
-autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+autocmd FileType java imap class<TAB> public class <C-r>=expand('%:t:r') <CR>{<CR><CR>}
+autocmd FileType java imap interface<TAB> public interface <C-r>=expand('%:t:r') <CR>{<CR><CR>}
 autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
 autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
 autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
