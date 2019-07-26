@@ -15,7 +15,6 @@ set relativenumber
 set ruler
 set ignorecase
 set autoindent
-set colorcolumn=80
 set foldenable
 set foldmethod=syntax
 
@@ -44,6 +43,10 @@ nnoremap tf :tabfirst<CR>
 nnoremap tl :tablast<CR>
 nnoremap T <C-W>T<CR>
 
+" Colocolumn
+
+nnoremap <leader>cc :set colorcolumn=80<CR>
+nnoremap <leader>co :set colorcolumn=0<CR>
 
 " Find files
 nnoremap <leader>f :e **/*
@@ -75,10 +78,11 @@ let netrw_winsize = 25
 let netrw_liststyle = 3
 let netrw_altv = 1
 let netrw_banner = 0
-"augroup fileManager
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
+augroup startupVim
+  autocmd!
+  autocmd VimEnter * :set colorcolumn=80
+  autocmd VimEnter * :MinimapToggle
+augroup END
 
 " Plugin settings
 " Lightline
