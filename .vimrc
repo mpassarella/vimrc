@@ -118,7 +118,7 @@ let g:minimap_toggle='<leader>mt'
 let g:minimap_highlight='Visual'
 
 " Spellchecking 
-nnoremap <leader>sc :set spell spelllang=en_uk<CR>
+nnoremap <leader>sc :set spell spelllang=en_us<CR>
 nnoremap <leader>so :set nospell<CR>
 
 " Markdown preview in Google Chrome
