@@ -16,6 +16,8 @@ set ruler
 set ignorecase
 set autoindent
 set colorcolumn=80
+set foldenable
+set foldmethod=syntax
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -40,6 +42,8 @@ nnoremap tp :tabprev<CR>
 nnoremap tn :tabnext<CR>
 nnoremap tf :tabfirst<CR>
 nnoremap tl :tablast<CR>
+nnoremap T <C-W>T<CR>
+
 
 " Find files
 nnoremap <leader>f :e **/*
@@ -86,7 +90,7 @@ let g:lightline = {
 \     'component_function': { 
 \         'gitbranch' : 'fugitive#head' 
 \     },
-\     'coloscheme': 'plastic'
+\     'colorscheme': 'plastic'
 \ }
 
 " Remapping Git fugitive plugin keys
