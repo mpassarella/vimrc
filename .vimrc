@@ -59,7 +59,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 
 " Shell mode
-nnoremap <leader>t :terminal<CR>
+nnoremap <leader>t :terminal<CR><C-w><C-r><C-w>10-
+nnoremap <leader>vt :vertical terminal<CR><C-w><C-r>
 nnoremap <leader>ts :shell<CR>
 
 " XML formatting
@@ -146,14 +147,14 @@ imap <F2> <ESC>:!mvn clean install<CR>
 vmap <F2> <ESC>:!mvn clean install<CR>
 
 " Search into java files
-nmap <F5> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
-imap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
-vmap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
+nmap <F5> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r><C-w>10-
+imap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r><C-w>10-
+vmap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r><C-w>10-
 
 " Search into files
-nmap <F6> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
-imap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
-vmap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
+nmap <F6> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r><C-w>10-
+imap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r><C-w>10-
+vmap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r><C-w>10-
 
 " Open Java file from Class name in new tab
 nmap <F7> "zyiw:tabe **/<C-r>z.java<CR>
