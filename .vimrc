@@ -15,8 +15,8 @@ set relativenumber
 set ruler
 set ignorecase
 set autoindent
-set foldenable
-set foldmethod=syntax
+" set foldenable
+" set foldmethod=syntax
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -82,7 +82,7 @@ let netrw_banner = 0
 augroup startupVim
   autocmd!
   autocmd VimEnter * :set colorcolumn=80
-  autocmd VimEnter * :MinimapToggle
+"  autocmd VimEnter * :MinimapToggle
 augroup END
 
 " Plugin settings
@@ -144,6 +144,26 @@ vmap <F3> :g/^$/d<CR>
 nmap <F2> :!mvn clean install<CR>
 imap <F2> <ESC>:!mvn clean install<CR>
 vmap <F2> <ESC>:!mvn clean install<CR>
+
+" Search into java files
+nmap <F5> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
+imap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
+vmap <F5> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r>
+
+" Search into files
+nmap <F6> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
+imap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
+vmap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
+
+" Open Java file from Class name in new tab
+nmap <F7> "zyiw:tabe **/<C-r>z.java<CR>
+imap <F7> <ESC>"zyiw:tabe **/<C-r>z.java<CR>
+vmap <F7> <ESC>"zyiw:tabe **/<C-r>z.java<CR>
+
+" Open file in new tab
+nmap <F8> <C-w>gf
+imap <F8> <ESC><C-w>gf
+vmap <F8> <ESC><C-w>gf
 
 " Snippets
 autocmd FileType java imap syso<TAB> System.out.println(
