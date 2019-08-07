@@ -1,10 +1,83 @@
 execute pathogen#infect()
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" ***************** Eclim configuration
+filetype plugin indent on
+let g:EclimCompletionMethod = 'omnifunc'
+" let g:EclimProjectTreeAutoOpen = 1
+
+" Mapping Omnicompletion
+inoremap <C-@> <C-x><C-o>
+set completeopt+=noinsert
+
+let g:EclimProjectTreeActions = [
+    \ {'pattern': '.*', 'name': 'Edit', 'action': 'edit'},
+    \ {'pattern': '.*', 'name': 'Tab', 'action': 'tabnew'},
+    \ {'pattern': '.*', 'name': 'Split', 'action': 'split'},
+  \ ]
+
+nmap <leader>jp :ProjectImport <C-r>=expand('%:p:h')<CR>
+nmap <leader>ji :JavaImport<CR>
+nmap <leader>jI :JavaImportOrganize<CR>
+nmap <leader>jr :JavaRename
+nmap <leader>jm :JavaMove
+nmap <leader>jo :JavaOutline<CR>
+nmap <leader>jf :JavaCorrect<CR>
+nmap <leader>jt :ProjectTreeToggle<CR>
+
+" Create Classes, Interfaces, Enums and Annotations
+nmap <leader>jnc :JavaNew class 
+nmap <leader>jni :JavaNew interface 
+nmap <leader>jna :JavaNew @interface 
+nmap <leader>jne :JavaNew enum 
+
+" Create Constructors
+nmap <leader>jc :JavaConstructor<CR>
+vmap <leader>jc :JavaConstructor<CR>
+
+" Create Getters 
+nmap <leader>jg :JavaGet!<CR>
+vmap <leader>jg :JavaGet!<CR>
+
+" Create Setters
+nmap <leader>js :JavaSet!<CR>
+vmap <leader>js :JavaSet!<CR>
+
+" Create Getters and Setters
+nmap <leader>ja :JavaGetSet!<CR>
+vmap <leader>ja :JavaGetSet!<CR>
+
+" Toggle/Remove a breakpoint
+nmap <leader>jb :JavaDebugBreakpointToggle<CR>
+nmap <leader>jB :JavaDebugBreakpointToggle!<CR>
+nmap <leader>jbl :JavaDebugBreakpointsList!<CR>
+
+" Debugging Start/Stop
+nmap <leader>jd :JavaDebugStart localhost 1044
+nmap <leader>jD :JavaDebugStop<CR>
+
+" Open associated Java file
+nmap <F7> :JavaSearchContext -a tabe<CR>
+imap <F7> :JavaSearchContext -a tabe<CR>
+vmap <F7> :JavaSearchContext -a tabe<CR>
+
+" Debug shortcuts 
+nmap <F2> :JavaDebugStep over<CR>
+imap <F2> :JavaDebugStep over<CR>
+vmap <F2> :JavaDebugStep over<CR>
+
+nmap <F3> :JavaDebugStep into<CR>
+imap <F3> :JavaDebugStep into<CR>
+vmap <F3> :JavaDebugStep into<CR>
+
+nmap <F4> :JavaDebugStep return<CR>
+imap <F4> :JavaDebugStep return<CR>
+vmap <F4> :JavaDebugStep return<CR>
+" ***************** Eclim configuration
 
 syntax on
 
 " Color scheme
-set t_Co=256   
+set t_Co=256
 set background=dark
 colorscheme plastic
 
@@ -23,7 +96,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-" Disable arrow keys 
+" Disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -83,21 +156,22 @@ let netrw_banner = 0
 augroup startupVim
   autocmd!
   autocmd VimEnter * :set colorcolumn=80
-"  autocmd VimEnter * :MinimapToggle
+  " autocmd VimEnter * :MinimapToggle
 augroup END
 
 " Plugin settings
 " Lightline
 let g:lightline = {
 \     'active': {
-\         'left': [['mode', 'paste' ], ['gitbranch', 'readonly', 'filename', 'modified']],
+\         'left': [['mode', 'paste' ], ['vcsinfo', 'readonly', 'filename', 'modified']],
 \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
 \     },
-\     'component_function': { 
-\         'gitbranch' : 'fugitive#head' 
+\     'component_function': {
 \     },
 \     'colorscheme': 'plastic'
 \ }
+set noshowmode
+set laststatus=2
 
 " Remapping VC commands for source code versioning systems
 nnoremap <leader>vs :VCStatus<CR>
@@ -123,7 +197,7 @@ let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mt'
 let g:minimap_highlight='Visual'
 
-" Spellchecking 
+" Spellchecking
 nnoremap <leader>sc :set spell spelllang=en_us<CR>
 nnoremap <leader>so :set nospell<CR>
 
@@ -131,20 +205,15 @@ nnoremap <leader>so :set nospell<CR>
 nnoremap <leader>p :!google-chrome "%"<CR>
 
 " Mapping Omnicompletion and javacomplete2
-inoremap <C-@> <C-x><C-o>
-set completeopt+=noinsert
+" inoremap <C-@> <C-x><C-o>
+" set completeopt+=noinsert
 
 " Quick functions
 
 " Delete empty lines
-nmap <F3> :g/^$/d<CR>
-imap <F3> :g/^$/d<CR>
-vmap <F3> :g/^$/d<CR>
-
-" Compile with maven 
-nmap <F2> :!mvn clean install<CR>
-imap <F2> <ESC>:!mvn clean install<CR>
-vmap <F2> <ESC>:!mvn clean install<CR>
+nmap <F9> :g/^$/d<CR>
+imap <F9> :g/^$/d<CR>
+vmap <F9> :g/^$/d<CR>
 
 " Search into java files
 nmap <F5> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} --include='*.java' <C-r>z .<CR><C-w><C-r><C-w>10-
@@ -156,24 +225,20 @@ nmap <F6> "zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<
 imap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r><C-w>10-
 vmap <F6> <ESC>"zyiw:new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r><C-w>10-
 
-" Open Java file from Class name in new tab
-nmap <F7> "zyiw:tabe **/<C-r>z.java<CR>
-imap <F7> <ESC>"zyiw:tabe **/<C-r>z.java<CR>
-vmap <F7> <ESC>"zyiw:tabe **/<C-r>z.java<CR>
-
 " Open file in new tab
 nmap <F8> <C-w>gf
 imap <F8> <ESC><C-w>gf
 vmap <F8> <ESC><C-w>gf
 
 " Snippets
-autocmd FileType java imap syso<TAB> System.out.println(
-autocmd FileType java imap sysr<TAB> System.err.println(
-autocmd FileType java imap class<TAB> public class <C-r>=expand('%:t:r') <CR>{<CR><CR>}
-autocmd FileType java imap interface<TAB> public interface <C-r>=expand('%:t:r') <CR>{<CR><CR>}
-autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
-autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
-autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
-autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
-autocmd FileType java imap if<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
+" autocmd FileType java imap main<TAB> public static void main(String[] args)<CR>{<CR><CR>}
+" autocmd FileType java imap syso<TAB> System.out.println(
+" autocmd FileType java imap sysr<TAB> System.err.println(
+" autocmd FileType java imap class<TAB> public class <C-r>=expand('%:t:r')<CR><CR>{<CR><CR>}
+" autocmd FileType java imap interface<TAB> public interface <C-r>=expand('%:t:r')<CR><CR>{<CR><CR>}
+" autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
+" autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
+" autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
+" autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+" autocmd FileType java imap try<TAB> try<CR>{<CR><CR>}<CR>catch (Exception ex)<CR>{<CR><CR>}<CR>finally<CR>{<CR><CR>}
+" autocmd FileType java imap if<TAB> if<CR>{<CR><CR>}<CR>else<CR>{<CR><CR>}
