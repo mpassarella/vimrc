@@ -9,7 +9,7 @@ augroup startupVim
 augroup END
 
 " Color scheme
-set t_Co=256
+set termguicolors
 set background=dark
 colorscheme gruvbox
 
@@ -172,3 +172,9 @@ nnoremap <leader>dc :JDBContinue<CR>
 nnoremap <leader>di :JDBStepIn<CR>
 nnoremap <leader>du :JDBStepOut<CR>
 nnoremap <leader>ds :JDBCommand 
+
+" Minimap
+let g:minimap_show='<leader>mm'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>mc'
+let g:minimap_toggle='<leader>mt'
