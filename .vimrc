@@ -19,20 +19,20 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox 
+colorscheme gruvbox
 
-" General settings
-set hlsearch
-set incsearch
-set number 
-set relativenumber
-set cursorline
-set ruler
-set ignorecase
-set autoindent
-filetype plugin on
-" set foldenable
-" set foldmethod=syntax
+" General settings           
+set hlsearch                 
+set incsearch                
+set number                   
+set relativenumber           
+set cursorline               
+set ruler                    
+set ignorecase               
+set autoindent               
+filetype plugin on           
+" set foldenable             
+" set foldmethod=syntax      
 
 " Option for GVim
 set guioptions-=m  "remove menu bar
@@ -214,6 +214,9 @@ nnoremap <leader>dc :JDBContinue<CR>
 nnoremap <leader>di :JDBStepIn<CR>
 nnoremap <leader>du :JDBStepOut<CR>
 nnoremap <leader>ds :JDBCommand 
+
+" Move
+let g:move_key_modifier = 'C'                              
 
 " Minimap
 let g:minimap_show='<leader>mm'
