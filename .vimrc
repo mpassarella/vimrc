@@ -1,7 +1,9 @@
+" --------------------------------------------------------------------------------------------------------------------------
 " VIM settings
 " --------------------------------------------------------------------------------------------------------------------------
+
 " Leader key is now Spacebar
-let mapleader = " "
+let mapleader = "\<SPACE>"
 
 " Pathogen is fired up
 execute pathogen#infect()
@@ -31,10 +33,15 @@ set autoindent
 " set foldenable
 " set foldmethod=syntax
 
+" Option for GVim
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
+
+" --------------------------------------------------------------------------------------------------------------------------
+" Remapping keys
+" --------------------------------------------------------------------------------------------------------------------------
 
 " Disable arrow keys
 noremap <Up> <NOP>
@@ -42,11 +49,20 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Editing and reloading .vimrc
+nnoremap <leader>rv :so $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>Ev :tabe $MYVIMRC<CR>
+
 " Handling tabs as spaces
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+
+" Cycling through buffers
+nnoremap <TAB> :bn<CR>
+nnoremap <S-TAB> :bp<CR>
 
 " Managing tabs
 nnoremap tt :tabnew<CR>
@@ -115,8 +131,10 @@ nmap <F4> :g/^$/d<CR>
 imap <F4> <ESC>:g/^$/d<CR>
 vmap <F4> <ESC>:g/^$/d<CR>
 
+" --------------------------------------------------------------------------------------------------------------------------
 " Plugin settings
 " --------------------------------------------------------------------------------------------------------------------------
+
 " Lightline
 let g:lightline = {
 \     'active': {
@@ -183,12 +201,12 @@ nmap <F11> :JDBContinue<CR>
 imap <F11> <ESC>:JDBContinue<CR>
 vmap <F11> <ESC>:JDBContinue<CR>
 
-nmap <F12> :JDBBreakpointOnLine<CR>
-imap <F12> <ESC>:JDBBreakpointOnLine<CR>
-vmap <F12> <ESC>:JDBBreakpointOnLine<CR>
+nmap <F12> :JDBToggleBreakpointOnLine<CR>
+imap <F12> <ESC>:JDBToggleBreakpointOnLine<CR>
+vmap <F12> <ESC>:JDBToggleBreakpointOnLinv<CR>
 
 nnoremap <leader>da :JDBAttach localhost:5005
-nnoremap <leader>db :JDBBreakpointOnLine<CR>
+nnoremap <leader>db :JDBToggleBreakpointOnLine<CR>
 nnoremap <leader>dc :JDBContinue<CR>
 nnoremap <leader>di :JDBStepIn<CR>
 nnoremap <leader>du :JDBStepOut<CR>
@@ -202,14 +220,15 @@ let g:minimap_toggle='<leader>mt'
 
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
+
 " Snippets
-autocmd FileType java imap syso<TAB> System.out.println(
-autocmd FileType java imap sysr<TAB> System.err.println(
-autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
-autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
-autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
-autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
-autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
+" autocmd FileType java imap syso<TAB> System.out.println(
+" autocmd FileType java imap sysr<TAB> System.err.println(
+" autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+" autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+" autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
+" autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
+" autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
+" autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+" autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
+" autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
