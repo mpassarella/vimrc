@@ -224,8 +224,6 @@ let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mt'
 
-vmap / :call comment#commentOut()
-
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
 
