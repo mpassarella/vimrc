@@ -30,6 +30,7 @@ set cursorline
 set ruler
 set ignorecase
 set autoindent
+filetype plugin on
 " set foldenable
 " set foldmethod=syntax
 
@@ -72,9 +73,9 @@ nnoremap tf :tabfirst<CR>
 nnoremap tl :tablast<CR>
 nnoremap T <C-W>T<CR>
 
-" Colocolumn
-nnoremap <leader>cc :set colorcolumn=80<CR>
-nnoremap <leader>co :set colorcolumn=0<CR>
+" Colorcolumn
+nnoremap <leader>80 :set colorcolumn=80<CR>
+nnoremap <leader>n80 :set colorcolumn=0<CR>
 
 " Find files
 nnoremap <leader>f :e **/*
@@ -114,7 +115,9 @@ nnoremap <leader>p :!google-chrome "%"<CR>
 nnoremap <leader>sc :set spell spelllang=en_us<CR>
 nnoremap <leader>so :set nospell<CR>
 
+" --------------------------------------------------------------------------------------------------------------------------
 " Quick functions
+" --------------------------------------------------------------------------------------------------------------------------
 
 " Search into files
 nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
@@ -217,6 +220,8 @@ let g:minimap_show='<leader>mm'
 let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mt'
+
+vmap / :call comment#commentOut()
 
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
