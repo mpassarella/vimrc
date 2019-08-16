@@ -15,6 +15,7 @@ cd ~/.vim/bundle
 git clone https://github.com/mattn/emmet-vim
 git clone https://github.com/tpope/vim-surround
 git clone https://github.com/scrooloose/nerdtree
+git clone https://github.com/scrooloose/nerdcommenter
 git clone https://github.com/itchyny/lightline.vim
 git clone https://github.com/severin-lemaignan/vim-minimap
 git clone https://github.com/juneedahamed/vc.vim
