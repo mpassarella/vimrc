@@ -88,8 +88,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 
 " Shell mode
-nnoremap <leader>t :terminal ++rows=15<CR><C-w><C-r>
-nnoremap <leader>vt :vertical terminal<CR><C-w><C-r>
+nnoremap <leader>t :terminal ++rows=15<CR><C-W><C-R>
+nnoremap <leader>vt :vertical terminal<CR><C-W><C-R>
 nnoremap <leader>ts :shell<CR>
 
 " XML formatting
@@ -120,14 +120,14 @@ nnoremap <leader>so :set nospell<CR>
 " --------------------------------------------------------------------------------------------------------------------------
 
 " Search into files
-nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
-imap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
-vmap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-r>z .<CR><C-w><C-r>
+nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
+imap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
+vmap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
 
 " Open file in new tab
-nmap <F3> <C-w>gf
-imap <F3> <ESC><C-w>gf
-vmap <F3> <ESC><C-w>gf
+nmap <F3> <C-W>gf
+imap <F3> <ESC><C-W>gf
+vmap <F3> <ESC><C-W>gf
 
 " Delete empty lines
 nmap <F4> :g/^$/d<CR>
@@ -223,6 +223,32 @@ let g:minimap_show='<leader>mm'
 let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
 let g:minimap_toggle='<leader>mt'
+
+" Fake
+" Choose a random element from a list
+call fake#define('sex', 'fake#choice(["male", "female"])')
+
+" Get a name of male or female
+" fake#int(1) returns 0 or 1
+call fake#define('name', 'fake#int(1) ? fake#gen("male_name")'
+                                  \ . ' : fake#gen("female_name")')
+
+" Get a full name
+call fake#define('fullname', 'fake#gen("name") . " " . fake#gen("surname")')
+
+" Get a nonsense text like Lorem ipsum
+call fake#define('sentence', 'fake#capitalize('
+                        \ . 'join(map(range(fake#int(3,15)),"fake#gen(\"nonsense\")"))'
+                        \ . ' . fake#chars(1,"..............!?"))')
+
+" Get a nonsense paragraph like Lorem ipsum
+call fake#define('paragraph', 'join(map(range(fake#int(3,10)),"fake#gen(\"sentence\")"))')
+
+nmap <leader>gp i<C-R>=fake#gen('paragraph')<CR><ESC>
+nmap <leader>gn i<C-R>=fake#gen('name')<CR><ESC>
+nmap <leader>gs i<C-R>=fake#gen('surname')<CR><ESC>
+nmap <leader>gf i<C-R>=fake#gen('fullname')<CR><ESC>
+nmap <leader>gc i<C-R>=fake#gen('country')<CR><ESC>
 
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
