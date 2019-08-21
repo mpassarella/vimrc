@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme solarized8
 
 " General settings           
 set hlsearch                 
@@ -71,6 +71,7 @@ nnoremap tp :tabprev<CR>
 nnoremap tn :tabnext<CR>
 nnoremap tf :tabfirst<CR>
 nnoremap tl :tablast<CR>
+nnoremap ts :tab sball<CR>
 nnoremap T <C-W>T<CR>
 
 " Colorcolumn
@@ -152,7 +153,7 @@ let g:lightline = {
 \         'javawarnings' : 'youcompleteme#GetWarningCount',
 \         'javaerrors' : 'youcompleteme#GetErrorCount'
 \     },
-\     'colorscheme' : 'gruvbox'
+\     'colorscheme' : 'solarized'
 \ }
 set noshowmode
 set laststatus=2
