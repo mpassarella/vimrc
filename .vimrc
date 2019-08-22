@@ -133,7 +133,7 @@ vmap <F3> <ESC><C-W>gf
 " Delete empty lines
 nmap <F4> :g/^$/d<CR>
 imap <F4> <ESC>:g/^$/d<CR>
-vmap <F4> <ESC>:g/^$/d<CR>
+vmap <F4> <ESC>:'<,'>g/^$/d<CR>
 
 " --------------------------------------------------------------------------------------------------------------------------
 " Plugin settings
@@ -254,7 +254,10 @@ nmap <leader>gc i<C-R>=fake#gen('country')<CR><ESC>
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
 
-" Snippets
+" Java Snippets
+nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><CR>{<CR>}<ESC>%o<TAB>
+nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><CR>{<CR>}<ESC>%o<TAB>
+
 " autocmd FileType java imap syso<TAB> System.out.println(
 " autocmd FileType java imap sysr<TAB> System.err.println(
 " autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
