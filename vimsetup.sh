@@ -22,6 +22,7 @@ git clone https://github.com/juneedahamed/vc.vim
 git clone https://github.com/valloric/youcompleteme
 git clone https://github.com/matze/vim-move
 git clone https://github.com/tkhren/vim-fake
+git clone https://github.com/ryanoasis/vim-devicons
 
 cd ~/.vim/plugin
 git clone https://gitlab.com/Dica-Developer/vim-jdb
