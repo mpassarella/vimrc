@@ -255,6 +255,8 @@ nmap <leader>gc i<C-R>=fake#gen('country')<CR><ESC>
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
+nmap <leader>C :tabnew<CR>:Calendar<CR>t
+
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
 
