@@ -251,6 +251,10 @@ nmap <leader>gs i<C-R>=fake#gen('surname')<CR><ESC>
 nmap <leader>gf i<C-R>=fake#gen('fullname')<CR><ESC>
 nmap <leader>gc i<C-R>=fake#gen('country')<CR><ESC>
 
+" Calendar
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
 
