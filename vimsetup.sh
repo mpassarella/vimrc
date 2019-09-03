@@ -18,7 +18,7 @@ git clone https://github.com/scrooloose/nerdtree
 git clone https://github.com/scrooloose/nerdcommenter
 git clone https://github.com/itchyny/lightline.vim
 git clone https://github.com/severin-lemaignan/vim-minimap
-git clone https://github.com/juneedahamed/vc.vim
+git clone https://github.com/tpope/vim-fugitive
 git clone https://github.com/valloric/youcompleteme
 git clone https://github.com/matze/vim-move
 git clone https://github.com/tkhren/vim-fake
