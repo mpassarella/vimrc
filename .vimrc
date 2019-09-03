@@ -180,17 +180,13 @@ nmap <F8> :YcmCompleter GetDoc<CR>
 imap <F8> <ESC>:YcmCompleter GetDoc<CR>
 vmap <F8> <ESC>:YcmCompleter GetDoc<CR>
 
-" Remapping VC commands for source code versioning systems
-nnoremap <leader>vs :VCStatus<CR>
-nnoremap <leader>vc :VCCommit -m ""
-nnoremap <leader>vp :VCPush<CR>
-nnoremap <leader>vu :VCPull<CR>
-nnoremap <leader>vd :VCDiff<CR>
-nnoremap <leader>vi :VCIncoming<CR>
-nnoremap <leader>vo :VCOutgoing<CR>
-nnoremap <leader>vl :VCLog<CR>
-nnoremap <leader>vb :VCBrowse<CR>
-nnoremap <leader>vr :VCRevert<CR>
+" Remapping Fugitive commands
+nnoremap <leader>vs :Gstatus<CR>
+nnoremap <leader>vc :Gcommit -m ""
+nnoremap <leader>vp :Gpush<CR>
+nnoremap <leader>vu :Gpull<CR>
+nnoremap <leader>vd :Gdiff<CR>
+nnoremap <leader>vl :Glog<CR>
 
 " Remapping for JDB Java Debugger
 nmap <F9> :JDBStepOver<CR>
