@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme solarized8
+colorscheme gruvbox
 
 " General settings           
 set hlsearch                 
@@ -135,6 +135,17 @@ nmap <F4> :g/^$/d<CR>
 imap <F4> <ESC>:g/^$/d<CR>
 vmap <F4> <ESC>:'<,'>g/^$/d<CR>
 
+nmap <leader>1 :!mvn clean install<CR>
+nmap <leader>2 :15new <CR><C-W><C-R>:read !java -jar target/
+nmap <leader>3 <NOP>
+nmap <leader>4 <NOP>
+nmap <leader>5 <NOP>
+nmap <leader>6 <NOP>
+nmap <leader>7 <NOP>
+nmap <leader>8 <NOP>
+nmap <leader>9 <NOP>
+nmap <leader>0 <NOP>
+
 " --------------------------------------------------------------------------------------------------------------------------
 " Plugin settings
 " --------------------------------------------------------------------------------------------------------------------------
@@ -153,7 +164,7 @@ let g:lightline = {
 \         'javawarnings' : 'youcompleteme#GetWarningCount',
 \         'javaerrors' : 'youcompleteme#GetErrorCount'
 \     },
-\     'colorscheme' : 'solarized'
+\     'colorscheme' : 'gruvbox'
 \ }
 set noshowmode
 set laststatus=2
