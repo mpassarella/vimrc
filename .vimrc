@@ -31,8 +31,8 @@ set ruler
 set ignorecase               
 set autoindent               
 filetype plugin on           
-" set foldenable             
-" set foldmethod=syntax      
+"set foldenable             
+"set foldmethod=syntax      
 
 " Option for GVim
 set guioptions-=m  "remove menu bar
@@ -192,12 +192,13 @@ imap <F8> <ESC>:YcmCompleter GetDoc<CR>
 vmap <F8> <ESC>:YcmCompleter GetDoc<CR>
 
 " Remapping Fugitive commands
-nnoremap <leader>vs :Gstatus<CR>
+nnoremap <leader>vs :G<CR>
 nnoremap <leader>vc :Gcommit -m ""
 nnoremap <leader>vp :Gpush<CR>
 nnoremap <leader>vu :Gpull<CR>
 nnoremap <leader>vd :Gdiff<CR>
 nnoremap <leader>vl :Glog<CR>
+nnoremap <leader>vb :Gbrowse<CR>
 
 " Remapping for JDB Java Debugger
 nmap <F9> :JDBStepOver<CR>
