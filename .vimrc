@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme tender
 
 " General settings           
 set hlsearch                 
@@ -164,7 +164,7 @@ let g:lightline = {
 \         'javawarnings' : 'youcompleteme#GetWarningCount',
 \         'javaerrors' : 'youcompleteme#GetErrorCount'
 \     },
-\     'colorscheme' : 'gruvbox'
+\     'colorscheme' : 'tender'
 \ }
 set noshowmode
 set laststatus=2
