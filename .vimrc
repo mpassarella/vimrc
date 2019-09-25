@@ -150,7 +150,7 @@ nmap <leader>0 <NOP>
 let g:lightline = {
 \     'active': {
 \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified'], ['warninglabel', 'javawarnings'], ['errorlabel', 'javaerrors']],
-\         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+\         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding'], ['gitbranch']]
 \     },
 \     'component': {
 \         'warninglabel' : 'Warnings',
@@ -158,7 +158,8 @@ let g:lightline = {
 \     },
 \     'component_function': {
 \         'javawarnings' : 'youcompleteme#GetWarningCount',
-\         'javaerrors' : 'youcompleteme#GetErrorCount'
+\         'javaerrors' : 'youcompleteme#GetErrorCount',
+\         'gitbranch' : 'fugitive#head'
 \     },
 \     'colorscheme' : 'tender'
 \ }
@@ -166,8 +167,14 @@ set noshowmode
 set laststatus=2
 
 " NERDTree
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeShowHidden = 1
+
 nmap <leader>o :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
+
+" Only in the NERDTree buffer
+nmap <leader>b :Bookmark<CR>
 
 " You Complete Me (JAVA)
 let g:ycm_autoclose_preview_window_after_completion = 1
