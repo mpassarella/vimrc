@@ -25,7 +25,6 @@ git clone https://github.com/tkhren/vim-fake
 git clone https://github.com/ryanoasis/vim-devicons
 git clone https://github.com/itchyny/calendar.vim
 git clone https://github.com/tpope/vim-rhubarb.git
-git clone https://github.com/jacoborus/tender.vim.git
 
 cd ~/.vim/plugin
 git clone https://gitlab.com/Dica-Developer/vim-jdb
@@ -48,6 +47,8 @@ git clone https://github.com/erichdongubler/vim-sublime-monokai
 git clone https://github.com/flrnprz/plastic.vim
 git clone https://github.com/lsdr/monokai.git
 git clone https://github.com/vim-scripts/Gummybears.git
+git clone https://github.com/jacoborus/tender.vim.git
+git clone https://github.com/arcticicestudio/nord-vim.git
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc
