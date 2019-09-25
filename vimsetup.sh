@@ -25,6 +25,7 @@ git clone https://github.com/tkhren/vim-fake
 git clone https://github.com/ryanoasis/vim-devicons
 git clone https://github.com/itchyny/calendar.vim
 git clone https://github.com/tpope/vim-rhubarb.git
+git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 
 cd ~/.vim/plugin
 git clone https://gitlab.com/Dica-Developer/vim-jdb

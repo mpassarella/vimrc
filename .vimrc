@@ -74,10 +74,6 @@ nnoremap tl :tablast<CR>
 nnoremap ts :tab sball<CR>
 nnoremap T <C-W>T<CR>
 
-" Colorcolumn
-nnoremap <leader>80 :set colorcolumn=80<CR>
-nnoremap <leader>n80 :set colorcolumn=0<CR>
-
 " Find files
 nnoremap <leader>f :e **/*
 nnoremap <leader>F :tabe **/*
@@ -171,6 +167,7 @@ set laststatus=2
 
 " NERDTree
 nmap <leader>o :NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeFind<CR>
 
 " You Complete Me (JAVA)
 let g:ycm_autoclose_preview_window_after_completion = 1
