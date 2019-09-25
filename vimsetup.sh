@@ -59,3 +59,5 @@ cd ~/.vim/bundle/youcompleteme
 
 git submodule update --init --recursive
 ./install.py --java-completer
+
+# END
