@@ -31,7 +31,9 @@ set ruler
 set ignorecase               
 set autoindent               
 filetype plugin on           
-"set foldenable             
+set splitbelow
+set splitright
+set foldenable             
 "set foldmethod=syntax      
 
 " Option for GVim
