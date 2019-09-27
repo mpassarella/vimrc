@@ -87,8 +87,8 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 
 " Shell mode
-nnoremap <leader>t :terminal ++rows=15<CR><C-W><C-R>
-nnoremap <leader>vt :vertical terminal<CR><C-W><C-R>
+nnoremap <leader>t :terminal ++rows=15<CR>
+nnoremap <leader>vt :vertical terminal<CR>
 nnoremap <leader>ts :shell<CR>
 
 " XML formatting
@@ -119,9 +119,9 @@ nnoremap <leader>so :set nospell<CR>
 " --------------------------------------------------------------------------------------------------------------------------
 
 " Search into files
-nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
-imap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
-vmap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR><C-W><C-R>
+nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
+imap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
+vmap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
 
 " Open file in new tab
 nmap <F3> <C-W>gf
@@ -134,7 +134,7 @@ imap <F4> <ESC>:g/^$/d<CR>
 vmap <F4> <ESC>:'<,'>g/^$/d<CR>
 
 nmap <leader>1 :!mvn clean install<CR>
-nmap <leader>2 :15new <CR><C-W><C-R>:read !java -jar target/
+nmap <leader>2 :15new <CR>:read !java -jar target/
 nmap <leader>3 <NOP>
 nmap <leader>4 <NOP>
 nmap <leader>5 <NOP>
@@ -179,7 +179,8 @@ nmap <leader>n :NERDTreeFind<CR>
 nmap <leader>b :Bookmark<CR>
 
 " You Complete Me (JAVA)
-let g:ycm_autoclose_preview_window_after_completion = 1
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 
 nmap <F5> :YcmCompleter GoTo<CR>
 imap <F5> <ESC>:YcmCompleter GoTo<CR>
