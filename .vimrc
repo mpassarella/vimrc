@@ -133,8 +133,8 @@ nmap <F4> :g/^$/d<CR>
 imap <F4> <ESC>:g/^$/d<CR>
 vmap <F4> <ESC>:'<,'>g/^$/d<CR>
 
-nmap <leader>1 :!mvn clean install<CR>
-nmap <leader>2 :15new <CR>:read !java -jar target/
+nmap <leader>1 :!mvn clean install -DskipTests<CR>
+nmap <leader>2 <NOP>
 nmap <leader>3 <NOP>
 nmap <leader>4 <NOP>
 nmap <leader>5 <NOP>
@@ -163,7 +163,7 @@ let g:lightline = {
 \         'javaerrors' : 'youcompleteme#GetErrorCount',
 \         'gitbranch' : 'fugitive#head'
 \     },
-\     'colorscheme' : 'powerline'
+\     'colorscheme' : 'molokai'
 \ }
 set noshowmode
 set laststatus=2
