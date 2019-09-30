@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme tender
+colorscheme monokai_pro
 
 " General settings           
 set hlsearch                 
@@ -163,7 +163,7 @@ let g:lightline = {
 \         'javaerrors' : 'youcompleteme#GetErrorCount',
 \         'gitbranch' : 'fugitive#head'
 \     },
-\     'colorscheme' : 'tender'
+\     'colorscheme' : 'powerline'
 \ }
 set noshowmode
 set laststatus=2

@@ -50,6 +50,7 @@ git clone https://github.com/lsdr/monokai.git
 git clone https://github.com/vim-scripts/Gummybears.git
 git clone https://github.com/jacoborus/tender.vim.git
 git clone https://github.com/arcticicestudio/nord-vim.git
+git clone https://github.com/phanviet/vim-monokai-pro.git
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc
