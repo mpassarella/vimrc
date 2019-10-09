@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme monokai_pro
+colorscheme gruvbox
 
 " General settings           
 set hlsearch                 
@@ -34,7 +34,9 @@ filetype plugin on
 set splitbelow
 set splitright
 set foldenable             
-"set foldmethod=syntax      
+set foldmethod=indent      
+set foldcolumn=2
+set foldlevel=1
 
 " Option for GVim
 set guioptions-=m  "remove menu bar
@@ -163,7 +165,7 @@ let g:lightline = {
 \         'javaerrors' : 'youcompleteme#GetErrorCount',
 \         'gitbranch' : 'fugitive#head'
 \     },
-\     'colorscheme' : 'molokai'
+\     'colorscheme' : 'gruvbox'
 \ }
 set noshowmode
 set laststatus=2
