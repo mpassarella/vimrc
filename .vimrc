@@ -12,14 +12,14 @@ syntax on
 
 " Startup 
 augroup startupVim
-  autocmd!
-  autocmd VimEnter * :set colorcolumn=80
+autocmd!
+autocmd VimEnter * :set colorcolumn=80
 augroup END
 
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme edge
 
 " General settings           
 set hlsearch                 
@@ -34,9 +34,9 @@ filetype plugin on
 set splitbelow
 set splitright
 set foldenable             
-set foldmethod=indent      
-set foldcolumn=2
-set foldlevel=1
+"set foldmethod=indent      
+"set foldcolumn=2
+"set foldlevel=1
 
 " Option for GVim
 set guioptions-=m  "remove menu bar
@@ -93,10 +93,6 @@ nnoremap <leader>t :terminal ++rows=15<CR>
 nnoremap <leader>vt :vertical terminal<CR>
 nnoremap <leader>ts :shell<CR>
 
-" XML formatting
-nnoremap <leader>x :%!xmllint --format -<CR>
-vnoremap <leader>x :'<,'>!xmllint --format -<CR>
-
 " Hex mode
 nnoremap <leader>h :%!xxd<CR>
 nnoremap <leader>H :%!xxd -r<CR>
@@ -121,25 +117,35 @@ nnoremap <leader>so :set nospell<CR>
 " --------------------------------------------------------------------------------------------------------------------------
 
 " Search into files
-nmap <F2> "zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
-imap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
-vmap <F2> <ESC>"zyiw:10new<CR>:read !grep -r --exclude-dir={.svn,target,.git} <C-R>z .<CR>
+set wildignore+=*/.svn/*,*/target/*,*/.git/*,*.zip,*.tar.gz,*.jar,*.class,*.o,*.so
+
+nmap <F2> "zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
+imap <F2> <ESC>"zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
+vmap <F2> <ESC>"zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
 
 " Open file in new tab
 nmap <F3> <C-W>gf
 imap <F3> <ESC><C-W>gf
 vmap <F3> <ESC><C-W>gf
 
-" Delete empty lines
-nmap <F4> :g/^$/d<CR>
-imap <F4> <ESC>:g/^$/d<CR>
-vmap <F4> <ESC>:'<,'>g/^$/d<CR>
+nmap <leader>1 :!mvn clean install<CR>
 
-nmap <leader>1 :!mvn clean install -DskipTests<CR>
-nmap <leader>2 <NOP>
-nmap <leader>3 <NOP>
-nmap <leader>4 <NOP>
-nmap <leader>5 <NOP>
+" Java formatting
+nmap <leader>2 :YcmCompleter Format<CR>
+vmap <leader>2 :YcmCompleter Format<CR>
+
+" JSON formatting
+nmap <leader>3 :%!jq .<CR>
+vmap <leader>3 :'<,'>!jq .<CR>
+
+" XML formatting
+nmap <leader>4 :%!xmllint --format -<CR>
+vmap <leader>4 :'<,'>!xmllint --format -<CR>
+
+" Delete empty lines
+nmap <leader>5 :g/^$/d<CR>
+vmap <leader>5 <ESC>:'<,'>g/^$/d<CR>
+
 nmap <leader>6 <NOP>
 nmap <leader>7 <NOP>
 nmap <leader>8 <NOP>
@@ -165,7 +171,7 @@ let g:lightline = {
 \         'javaerrors' : 'youcompleteme#GetErrorCount',
 \         'gitbranch' : 'fugitive#head'
 \     },
-\     'colorscheme' : 'gruvbox'
+\     'colorscheme' : 'edge'
 \ }
 set noshowmode
 set laststatus=2
@@ -207,7 +213,7 @@ nnoremap <leader>vp :Gpush<CR>
 nnoremap <leader>vu :Gpull<CR>
 nnoremap <leader>vd :Gdiff<CR>
 nnoremap <leader>vl :Glog<CR>
-nnoremap <leader>vb :Gbrowse<CR>
+nnoremap <leader>vb :0Gclog<CR>
 
 " Remapping for JDB Java Debugger
 nmap <F9> :JDBStepOver<CR>
@@ -237,10 +243,10 @@ nnoremap <leader>ds :JDBCommand
 let g:move_key_modifier = 'C'                              
 
 " Minimap
-let g:minimap_show='<leader>mm'
+let g:minimap_show='<leader>ms'
 let g:minimap_update='<leader>mu'
 let g:minimap_close='<leader>mc'
-let g:minimap_toggle='<leader>mt'
+let g:minimap_toggle='<leader>mm'
 
 " Fake
 " Choose a random element from a list
@@ -278,8 +284,8 @@ nmap <leader>C :tabnew<CR>:Calendar<CR>t
 " --------------------------------------------------------------------------------------------------------------------------
 
 " Java Snippets
-nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><CR>{<CR>}<ESC>%o<TAB>
-nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><CR>{<CR>}<ESC>%o<TAB>
+nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
+nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 
 " autocmd FileType java imap syso<TAB> System.out.println(
 " autocmd FileType java imap sysr<TAB> System.err.println(
