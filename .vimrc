@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme edge
+colorscheme gruvbox
 
 " General settings           
 set hlsearch                 
@@ -34,6 +34,7 @@ filetype plugin on
 set splitbelow
 set splitright
 set foldenable             
+set backspace=indent,eol,start
 "set foldmethod=indent      
 "set foldcolumn=2
 "set foldlevel=1
@@ -121,14 +122,15 @@ set wildignore+=*/.svn/*,*/target/*,*/.git/*,*.zip,*.tar.gz,*.jar,*.class,*.o,*.
 
 nmap <F2> "zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
 imap <F2> <ESC>"zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
-vmap <F2> <ESC>"zyiw:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
+vmap <F2> "zy:vimgrep /<C-R>z/gj **/*<CR>:copen<CR>
 
 " Open file in new tab
 nmap <F3> <C-W>gf
 imap <F3> <ESC><C-W>gf
 vmap <F3> <ESC><C-W>gf
 
-nmap <leader>1 :!mvn clean install<CR>
+" Compile with maven
+nmap <leader>1 :!mvn clean install -DskipTests<CR>
 
 " Java formatting
 nmap <leader>2 :YcmCompleter Format<CR>
@@ -142,13 +144,18 @@ vmap <leader>3 :'<,'>!jq .<CR>
 nmap <leader>4 :%!xmllint --format -<CR>
 vmap <leader>4 :'<,'>!xmllint --format -<CR>
 
-" Delete empty lines
-nmap <leader>5 :g/^$/d<CR>
-vmap <leader>5 <ESC>:'<,'>g/^$/d<CR>
+" HTML formatting
+nmap <leader>5 :%!xmllint --format --html -<CR>
+vmap <leader>5 :'<,'>!xmllint --format --html -<CR>
 
-nmap <leader>6 <NOP>
-nmap <leader>7 <NOP>
+" Delete empty lines
+nmap <leader>6 :g/^$/d<CR>
+vmap <leader>6 <ESC>:'<,'>g/^$/d<CR>
+
+nmap <leader>7 :vertical diffsplit 
+
 nmap <leader>8 <NOP>
+
 nmap <leader>9 <NOP>
 nmap <leader>0 <NOP>
 
@@ -159,7 +166,7 @@ nmap <leader>0 <NOP>
 " Lightline
 let g:lightline = {
 \     'active': {
-\         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified'], ['warninglabel', 'javawarnings'], ['errorlabel', 'javaerrors']],
+\         'left': [['mode', 'paste' ], ['readonly', 'fullfilepath', 'modified'], ['warninglabel', 'javawarnings'], ['errorlabel', 'javaerrors']],
 \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding'], ['gitbranch']]
 \     },
 \     'component': {
@@ -169,12 +176,17 @@ let g:lightline = {
 \     'component_function': {
 \         'javawarnings' : 'youcompleteme#GetWarningCount',
 \         'javaerrors' : 'youcompleteme#GetErrorCount',
-\         'gitbranch' : 'fugitive#head'
+\         'gitbranch' : 'fugitive#head',
+\         'fullfilepath' : "FullFilePath"
 \     },
-\     'colorscheme' : 'edge'
+\     'colorscheme' : 'gruvbox'
 \ }
 set noshowmode
 set laststatus=2
+
+function! FullFilePath()
+    return expand('%')
+endfunction
 
 " NERDTree
 let g:NERDTreeShowBookmarks = 1
@@ -230,7 +242,7 @@ vmap <F11> <ESC>:JDBContinue<CR>
 
 nmap <F12> :JDBToggleBreakpointOnLine<CR>
 imap <F12> <ESC>:JDBToggleBreakpointOnLine<CR>
-vmap <F12> <ESC>:JDBToggleBreakpointOnLinv<CR>
+vmap <F12> <ESC>:JDBToggleBreakpointOnLine<CR>
 
 nnoremap <leader>da :JDBAttach localhost:5005
 nnoremap <leader>db :JDBToggleBreakpointOnLine<CR>
@@ -287,13 +299,13 @@ nmap <leader>C :tabnew<CR>:Calendar<CR>t
 nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 
-" autocmd FileType java imap syso<TAB> System.out.println(
-" autocmd FileType java imap sysr<TAB> System.err.println(
-" autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-" autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-" autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
-" autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
-" autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
-" autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-" autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
-" autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
+"autocmd FileType java imap syso<TAB> System.out.println(
+"autocmd FileType java imap sysr<TAB> System.err.println(
+"autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+"autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+"autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
+"autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
+"autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
+"autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+"autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
+"autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}

@@ -38,6 +38,7 @@ git clone https://github.com/lifepillar/vim-solarized8
 git clone https://github.com/sainnhe/vim-color-atlantis
 git clone https://github.com/jacoborus/tender.vim.git
 git clone https://github.com/sainnhe/edge.git
+git clone https://github.com/gmoe/vim-espresso.git
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc
@@ -47,5 +48,6 @@ cd ~/.vim/bundle/youcompleteme
 
 git submodule update --init --recursive
 ./install.py --java-completer
+./install.py --go-completer
 
 # END
