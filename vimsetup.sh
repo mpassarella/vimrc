@@ -19,7 +19,7 @@ git clone https://github.com/scrooloose/nerdcommenter
 git clone https://github.com/itchyny/lightline.vim
 git clone https://github.com/severin-lemaignan/vim-minimap
 git clone https://github.com/tpope/vim-fugitive
-git clone https://github.com/valloric/youcompleteme
+# git clone https://github.com/valloric/youcompleteme
 git clone https://github.com/matze/vim-move
 git clone https://github.com/tkhren/vim-fake
 git clone https://github.com/ryanoasis/vim-devicons
@@ -28,7 +28,7 @@ git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdt
 git clone https://github.com/vim-scripts/cream-showinvisibles
 
 cd ~/.vim/plugin
-git clone https://gitlab.com/Dica-Developer/vim-jdb
+# git clone https://gitlab.com/Dica-Developer/vim-jdb
 
 # Installing colorschemes
 cd ~/.vim/bundle
@@ -44,10 +44,10 @@ git clone https://github.com/gmoe/vim-espresso.git
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc
 
 # Configuring YouCompleteMe for java
-cd ~/.vim/bundle/youcompleteme
+# cd ~/.vim/bundle/youcompleteme
 
-git submodule update --init --recursive
-./install.py --java-completer
-./install.py --go-completer
+# git submodule update --init --recursive
+# ./install.py --java-completer
+# ./install.py --go-completer
 
 # END
