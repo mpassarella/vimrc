@@ -32,10 +32,12 @@ cd ~/.vim/bundle
 
 git clone https://github.com/morhetz/gruvbox
 git clone https://github.com/lifepillar/vim-solarized8
-git clone https://github.com/sainnhe/vim-color-atlantis
 git clone https://github.com/jacoborus/tender.vim.git
 git clone https://github.com/sainnhe/edge.git
 git clone https://github.com/gmoe/vim-espresso.git
+git clone https://github.com/srcery-colors/srcery-vim.git
+git clone https://github.com/Rigellute/rigel.git
+git clone https://github.com/arcticicestudio/nord-vim.git
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc_no_java

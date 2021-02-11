@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme srcery
 
 " General settings           
 set hlsearch                 
@@ -130,8 +130,8 @@ vmap <F3> <ESC><C-W>gf
 nmap <leader>1 :!mvn clean install -DskipTests<CR>
 
 " Java formatting
-nmap <leader>2 :YcmCompleter Format<CR>
-vmap <leader>2 :YcmCompleter Format<CR>
+nmap <leader>2 <NOP>
+vmap <leader>2 <NOP>
 
 " JSON formatting
 nmap <leader>3 :%!jq .<CR>
@@ -170,7 +170,7 @@ let g:lightline = {
 \         'gitbranch' : 'fugitive#head',
 \         'fullfilepath' : "FullFilePath"
 \     },
-\     'colorscheme' : 'gruvbox'
+\     'colorscheme' : 'srcery'
 \ }
 set noshowmode
 set laststatus=2
@@ -181,7 +181,7 @@ endfunction
 
 " NERDTree
 let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 0
 
 nmap <leader>o :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
