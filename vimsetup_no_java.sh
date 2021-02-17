@@ -38,6 +38,7 @@ git clone https://github.com/gmoe/vim-espresso.git
 git clone https://github.com/srcery-colors/srcery-vim.git
 git clone https://github.com/Rigellute/rigel.git
 git clone https://github.com/arcticicestudio/nord-vim.git
+git clone https://github.com/ayu-theme/ayu-vim.git
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc_no_java

@@ -19,7 +19,7 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme srcery
 
 " General settings           
 set hlsearch                 
@@ -35,6 +35,7 @@ set splitbelow
 set splitright
 set foldenable             
 set backspace=indent,eol,start
+set noswapfile 
 "set foldmethod=indent      
 "set foldcolumn=2
 "set foldlevel=1
@@ -179,7 +180,7 @@ let g:lightline = {
 \         'gitbranch' : 'fugitive#head',
 \         'fullfilepath' : "FullFilePath"
 \     },
-\     'colorscheme' : 'gruvbox'
+\     'colorscheme' : 'srcery'
 \ }
 set noshowmode
 set laststatus=2
@@ -299,13 +300,13 @@ nmap <leader>C :tabnew<CR>:Calendar<CR>t
 nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 
-"autocmd FileType java imap syso<TAB> System.out.println(
-"autocmd FileType java imap sysr<TAB> System.err.println(
-"autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-"autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-"autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
-"autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
-"autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
-"autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-"autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
-"autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
+autocmd FileType java imap syso<TAB> System.out.println(
+autocmd FileType java imap sysr<TAB> System.err.println(
+autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
+autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
+autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
+autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
+autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
