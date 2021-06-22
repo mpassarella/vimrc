@@ -26,6 +26,8 @@ git clone https://github.com/ryanoasis/vim-devicons
 git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 git clone https://github.com/vim-scripts/cream-showinvisibles
 
+cp ./yank_mapping.vim ~/.vim/bundle/nerdtree/nerdtree_plugin
+
 cd ~/.vim/plugin
 git clone https://gitlab.com/Dica-Developer/vim-jdb
 
@@ -41,6 +43,7 @@ git clone https://github.com/srcery-colors/srcery-vim.git
 git clone https://github.com/Rigellute/rigel.git
 git clone https://github.com/arcticicestudio/nord-vim.git
 git clone https://github.com/ayu-theme/ayu-vim.git
+git clone https://github.com/moznion/jcommenter.vim
 
 # Get the .vimrc from my github
 curl -LSso ~/.vimrc https://raw.githubusercontent.com/mpassarella/vimrc/master/.vimrc
@@ -51,5 +54,6 @@ cd ~/.vim/bundle/youcompleteme
 git submodule update --init --recursive
 ./install.py --java-completer
 ./install.py --clangd-completer
+./install.py --js-completer
 
 # END

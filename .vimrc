@@ -19,7 +19,10 @@ augroup END
 " Color scheme
 set termguicolors
 set background=dark
-colorscheme srcery
+let ayucolor="dark"
+"let ayucolor="mirage"
+"let ayucolor="light"
+colorscheme ayu
 
 " General settings           
 set hlsearch                 
@@ -101,17 +104,17 @@ nnoremap <leader>H :%!xxd -r<CR>
 vnoremap <leader>h :'<,'>!xxd<CR>
 vnoremap <leader>H :'<,'>!xxd -r<CR>
 
-" Convert markdown to PDF, PPTX and DOCX
+" Convert markdown to PDF, pPTX and DOCX
 nnoremap <leader>cp :!pandoc -f gfm -t latex -o %.pdf %<CR>
 nnoremap <leader>cd :!pandoc -f gfm -t docx -o %.docx %<CR>
 nnoremap <leader>ck :!pandoc -f gfm -t pptx -o %.pptx %<CR>
 nnoremap <leader>ch :!pandoc -f gfm -t html -o %.html %<CR>
 
 " Markdown preview in Google Chrome
-nnoremap <leader>p :!google-chrome "%"<CR>
+nnoremap <leader>p :!gnome-www-browser "%"<CR>
 
 " Spellchecking
-nnoremap <leader>sc :set spell spelllang=en_us<CR>
+nnoremap <leader>sc :set spell spelllang=en_us,it<CR>
 nnoremap <leader>so :set nospell<CR>
 
 " --------------------------------------------------------------------------------------------------------------------------
@@ -160,6 +163,10 @@ nmap <leader>8 <NOP>
 nmap <leader>9 <NOP>
 nmap <leader>0 <NOP>
 
+" Compose email with thunderbird using current file
+nmap <leader>se :!thunderbird -compose "body='`cat %`'"<CR>
+nmap <leader>sa :!thunderbird -compose "attachment='file://`realpath %`'"<CR>
+
 " --------------------------------------------------------------------------------------------------------------------------
 " Plugin settings
 " --------------------------------------------------------------------------------------------------------------------------
@@ -180,7 +187,7 @@ let g:lightline = {
 \         'gitbranch' : 'fugitive#head',
 \         'fullfilepath' : "FullFilePath"
 \     },
-\     'colorscheme' : 'srcery'
+\     'colorscheme' : 'ayu'
 \ }
 set noshowmode
 set laststatus=2
@@ -191,10 +198,17 @@ endfunction
 
 " NERDTree
 let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowHidden = 0
 
 nmap <leader>o :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
+
+"nmap <leader>o :Vexplore<CR>
+"let g:netrw_banner = 0
+"let g:netrw_browse_split = 2
+"let g:netrw_winsize = 25
+"let g:netrw_liststyle = 3
+"let g:netrw_altv = 1
 
 " Only in the NERDTree buffer
 nmap <leader>b :Bookmark<CR>
@@ -221,11 +235,12 @@ vmap <F8> <ESC>:YcmCompleter GetDoc<CR>
 
 " Remapping Fugitive commands
 nnoremap <leader>vs :G<CR>
-nnoremap <leader>vc :Gcommit -m ""
-nnoremap <leader>vp :Gpush<CR>
-nnoremap <leader>vu :Gpull<CR>
-nnoremap <leader>vd :Gdiff<CR>
-nnoremap <leader>vl :Glog<CR>
+nnoremap <leader>vc :Git commit -m ""
+nnoremap <leader>vp :Git push<CR>
+nnoremap <leader>vu :Git pull<CR>
+nnoremap <leader>vd :Git diff<CR>
+nnoremap <leader>vds :Gvdiffsplit<CR>
+nnoremap <leader>vl :Git log<CR>
 nnoremap <leader>vb :0Gclog<CR>
 
 " Remapping for JDB Java Debugger
@@ -247,10 +262,8 @@ vmap <F12> <ESC>:JDBToggleBreakpointOnLine<CR>
 
 nnoremap <leader>da :JDBAttach localhost:5005
 nnoremap <leader>db :JDBToggleBreakpointOnLine<CR>
-nnoremap <leader>dc :JDBContinue<CR>
-nnoremap <leader>di :JDBStepIn<CR>
-nnoremap <leader>du :JDBStepOut<CR>
-nnoremap <leader>ds :JDBCommand 
+nnoremap <leader>dd :JDBDetach<CR>
+nnoremap <leader>dc :JDBCommand 
 
 " Move
 let g:move_key_modifier = 'C'                              
@@ -287,12 +300,6 @@ nmap <leader>gs i<C-R>=fake#gen('surname')<CR><ESC>
 nmap <leader>gf i<C-R>=fake#gen('fullname')<CR><ESC>
 nmap <leader>gc i<C-R>=fake#gen('country')<CR><ESC>
 
-" Calendar
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-
-nmap <leader>C :tabnew<CR>:Calendar<CR>t
-
 " Code snippets
 " --------------------------------------------------------------------------------------------------------------------------
 
@@ -300,13 +307,12 @@ nmap <leader>C :tabnew<CR>:Calendar<CR>t
 nmap <leader>jc ipublic class <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 nmap <leader>ji ipublic interface <C-R>=expand('%:t:r')<CR><SPACE>{<CR>}<ESC>%o<TAB>
 
-autocmd FileType java imap syso<TAB> System.out.println(
-autocmd FileType java imap sysr<TAB> System.err.println(
-autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
-autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
-autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
-autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
-autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
-autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
-autocmd FileType java imap if(true)<TAB> if<CR>{<CR><CR>}else<CR>{<CR><CR>}
+"autocmd FileType java imap syso<TAB> System.out.println(
+"autocmd FileType java imap sysr<TAB> System.err.println(
+"autocmd FileType java imap class<TAB> public class <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+"autocmd FileType java imap interface<TAB> public interface <C-R>=expand('%:t:r')<CR>{<CR><CR>}
+"autocmd FileType java imap for<TAB> for(int i=0; i<max; i++)<CR>{<CR><CR>}
+"autocmd FileType java imap fore<TAB> for(Object obj : array)<CR>{<CR><CR>}
+"autocmd FileType java imap while<TAB> while(true)<CR>{<CR><CR>}
+"autocmd FileType java imap switch<TAB> switch(variable)<CR>{<CR><CR>case 1:<CR><CR>break;<CR><CR>case 2:<CR><CR>break;<CR><CR>default:<CR><CR>}
+"autocmd FileType java imap try<TAB> try<CR>{<CR><CR>} catch (Exception ex)<CR>{<CR><CR>} finally<CR>{<CR><CR>}
