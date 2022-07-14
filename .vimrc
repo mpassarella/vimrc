@@ -243,6 +243,10 @@ nnoremap <leader>vds :Gvdiffsplit<CR>
 nnoremap <leader>vl :Git log<CR>
 nnoremap <leader>vb :0Gclog<CR>
 
+" Diffsplit
+nnoremap <leader>df :windo diffthis<CR>
+nnoremap <leader>do :windo diffoff<CR>
+
 " Remapping for JDB Java Debugger
 nmap <F9> :JDBStepOver<CR>
 imap <F9> <ESC>:JDBStepOver<CR>
