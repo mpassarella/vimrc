@@ -20,6 +20,9 @@ augroup END
 set termguicolors
 set background=dark
 colorscheme srcery
+"let ayucolor="mirage"
+"let ayucolor="light"
+colorscheme ayu
 
 " General settings           
 set hlsearch                 
@@ -35,6 +38,10 @@ set splitbelow
 set splitright
 set foldenable             
 set backspace=indent,eol,start
+set noswapfile 
+"set foldmethod=indent      
+"set foldcolumn=2
+"set foldlevel=1
 
 " Option for GVim
 set guioptions-=m  "remove menu bar
@@ -97,17 +104,17 @@ nnoremap <leader>H :%!xxd -r<CR>
 vnoremap <leader>h :'<,'>!xxd<CR>
 vnoremap <leader>H :'<,'>!xxd -r<CR>
 
-" Convert markdown to PDF, PPTX and DOCX
+" Convert markdown to PDF, pPTX and DOCX
 nnoremap <leader>cp :!pandoc -f gfm -t latex -o %.pdf %<CR>
 nnoremap <leader>cd :!pandoc -f gfm -t docx -o %.docx %<CR>
 nnoremap <leader>ck :!pandoc -f gfm -t pptx -o %.pptx %<CR>
 nnoremap <leader>ch :!pandoc -f gfm -t html -o %.html %<CR>
 
 " Markdown preview in Google Chrome
-nnoremap <leader>p :!brave-browser "%"<CR>
+nnoremap <leader>p :!gnome-www-browser "%"<CR>
 
 " Spellchecking
-nnoremap <leader>sc :set spell spelllang=en_us<CR>
+nnoremap <leader>sc :set spell spelllang=en_us,it<CR>
 nnoremap <leader>so :set nospell<CR>
 
 " --------------------------------------------------------------------------------------------------------------------------
@@ -130,8 +137,8 @@ vmap <F3> <ESC><C-W>gf
 nmap <leader>1 :!mvn clean install -DskipTests<CR>
 
 " Java formatting
-nmap <leader>2 <NOP>
-vmap <leader>2 <NOP>
+nmap <leader>2 :YcmCompleter Format<CR>
+vmap <leader>2 :YcmCompleter Format<CR>
 
 " JSON formatting
 nmap <leader>3 :%!jq .<CR>
@@ -156,6 +163,10 @@ nmap <leader>8 <NOP>
 nmap <leader>9 <NOP>
 nmap <leader>0 <NOP>
 
+" Compose email with thunderbird using current file
+nmap <leader>se :!thunderbird -compose "body='`cat %`'"<CR>
+nmap <leader>sa :!thunderbird -compose "attachment='file://`realpath %`'"<CR>
+
 " --------------------------------------------------------------------------------------------------------------------------
 " Plugin settings
 " --------------------------------------------------------------------------------------------------------------------------
@@ -163,14 +174,20 @@ nmap <leader>0 <NOP>
 " Lightline
 let g:lightline = {
 \     'active': {
-\         'left': [['mode', 'paste' ], ['readonly', 'fullfilepath', 'modified']],
+\         'left': [['mode', 'paste' ], ['readonly', 'fullfilepath', 'modified'], ['warninglabel', 'javawarnings'], ['errorlabel', 'javaerrors']],
 \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding'], ['gitbranch']]
 \     },
+\     'component': {
+\         'warninglabel' : 'Warnings',
+\         'errorlabel' : 'Errors'
+\     },
 \     'component_function': {
+\         'javawarnings' : 'youcompleteme#GetWarningCount',
+\         'javaerrors' : 'youcompleteme#GetErrorCount',
 \         'gitbranch' : 'fugitive#head',
 \         'fullfilepath' : "FullFilePath"
 \     },
-\     'colorscheme' : 'srcery'
+\     'colorscheme' : 'ayu'
 \ }
 set noshowmode
 set laststatus=2
@@ -186,17 +203,29 @@ let g:NERDTreeShowHidden = 0
 nmap <leader>o :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
 
+"nmap <leader>o :Vexplore<CR>
+"let g:netrw_banner = 0
+"let g:netrw_browse_split = 2
+"let g:netrw_winsize = 25
+"let g:netrw_liststyle = 3
+"let g:netrw_altv = 1
+"
 " Only in the NERDTree buffer
 nmap <leader>b :Bookmark<CR>
 
 " Remapping Fugitive commands
 nnoremap <leader>vs :G<CR>
-nnoremap <leader>vc :Gcommit -m ""
-nnoremap <leader>vp :Gpush<CR>
-nnoremap <leader>vu :Gpull<CR>
-nnoremap <leader>vd :Gdiff<CR>
-nnoremap <leader>vl :Glog<CR>
+nnoremap <leader>vc :Git commit -m ""
+nnoremap <leader>vp :Git push<CR>
+nnoremap <leader>vu :Git pull<CR>
+nnoremap <leader>vd :Git diff<CR>
+nnoremap <leader>vds :Gvdiffsplit<CR>
+nnoremap <leader>vl :Git log<CR>
 nnoremap <leader>vb :0Gclog<CR>
+
+" Diffsplit
+nnoremap <leader>df :windo diffthis<CR>
+nnoremap <leader>do :windo diffoff<CR>
 
 " Move
 let g:move_key_modifier = 'C'                              
