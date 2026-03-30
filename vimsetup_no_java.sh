@@ -31,6 +31,7 @@ cd ~/.vim/plugin
 cd ~/.vim/bundle
 
 git clone https://github.com/morhetz/gruvbox
+git clone https://github.com/sheldonldev/vim-gruvdark
 git clone https://github.com/lifepillar/vim-solarized8
 git clone https://github.com/jacoborus/tender.vim.git
 git clone https://github.com/sainnhe/edge.git
